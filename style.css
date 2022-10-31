@@ -1,0 +1,237 @@
+@font-face {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Poppins'), url(assets/Poppins-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Poppins'), url(assets/Poppins-SemiBold.woff) format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html {
+  background-color: #fff0f0;
+  font-family: "Poppins", sans-serif;
+  color: #fffafa;
+}
+
+#container::before {
+  content: "";
+  position: fixed;
+  background-image: url(assets/pattern.png);
+  background-size: 15rem;
+  transform: rotate(15deg);
+  opacity: 0.65;
+  inset: 0;
+}
+
+#container {
+  position: fixed;
+  margin: 1.5rem;
+  padding: 5rem;
+  background-color: #ffbed7;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 2rem;
+  inset: 0;
+  z-index: 100;
+  gap: 13rem;
+}
+
+#container::after {
+  content: "";
+  position: fixed;
+  margin: 0 1.5rem;
+  background-image: url(assets/wave.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: 110%;
+  filter: opacity(50%) drop-shadow(0 -10px 5px #ff22911f);
+  inset: 0;
+}
+
+#scrolling {
+  position: fixed;
+  margin: 1.5rem;
+  background-image: url(assets/name.svg);
+  background-repeat: repeat-x;
+  background-position-y: 60%;
+  background-size: 25rem;
+  animation: scrolling 10s 0s linear infinite;
+  inset: 0;
+}
+
+@keyframes scrolling {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 25rem;
+  }
+}
+
+#name {
+  text-align: center;
+  font-size: 5rem;
+  letter-spacing: 1rem;
+  inline-size: max-content;
+  filter: drop-shadow(5px 5px 3px #f963ae2f);
+}
+
+#cv {
+  filter: drop-shadow(3px 3px 2px #f963ae5f);
+}
+
+#search-container {
+  position: relative;
+  margin-left: 5rem;
+  top: 1.5rem;
+}
+
+#search {
+  position: absolute;
+  padding: 1.25rem 2rem;
+  background-color: #ffffff5f;
+  border: none;
+  border-radius: 3rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.5rem;
+  min-width: 120px;
+  width: 100%;
+  z-index: 300;
+  box-shadow: 5px 5px 5px #f963ae3f;
+  transition: background-color 0.1s ease;
+}
+
+#search:active, #search:focus, #search:hover {
+  background-color: #ffffff7f;
+  outline: none;
+}
+
+#button {
+  position: absolute;
+  padding: 0.75rem 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #ffffffdf;
+  border: none;
+  border-radius: 3rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 400;
+  transition-property: background-color color;
+  transition-duration: .1s;
+  transition-timing-function: ease;
+}
+
+#button:active, #button:focus, #button:hover {
+  background-color: white;
+  color: #333;
+  outline: none;
+}
+
+#pins {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  top: 7.5rem;
+  text-align: right;
+  gap: 2rem;
+}
+
+#pins > img {
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 3rem;
+  border: #ff2291 3px solid;
+  box-shadow: 5px 5px 5px #f963ae3f;
+  z-index: 500;
+  transition: transform .15s ease;
+}
+
+#pins > img:hover {
+  transform: rotate(10deg) scale(1.15);
+}
+
+#bocchi {
+  position: absolute;
+  margin: auto;
+  height: 100%;
+  inset: 0;
+  z-index: 900;
+  filter: drop-shadow(0 0 5px #f963ae7f);
+}
+
+#footer {
+  position: fixed;
+  left: -85px;
+  bottom: -150px;
+  width: 115%;
+  z-index: 200;
+  filter: drop-shadow(0 0 10px #ff22912f);
+  transition: transform .3s ease;
+}
+
+#footer:hover {
+  transform: translateY(-50px);
+}
+
+@media only screen and (max-width: 1279px) {
+  #container {
+    padding: 5vw;
+    gap: 10vw;
+  }
+
+  #container::after {
+    background-position-y: bottom;
+  }
+
+  #scrolling {
+    background-position-y: 65%;
+  }
+
+  #name {
+    text-align: left;
+    letter-spacing: initial;
+    line-height: 7rem;
+  }
+
+  #footer {
+    bottom: -10vw;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #scrolling {
+    background-position-y: 70%;
+  }
+
+  #name {
+    inline-size: initial;
+    white-space: nowrap;
+  }
+
+  #search-container {
+    display: none;
+  }
+
+  #pins {
+    top: 0;
+    flex-direction: column;
+  }
+}
