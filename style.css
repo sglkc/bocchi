@@ -5,13 +5,6 @@
   src: local('Poppins'), url(assets/Poppins-Regular.woff) format('woff');
 }
 
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 600;
-  src: local('Poppins'), url(assets/Poppins-SemiBold.woff) format('woff');
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -47,48 +40,60 @@ html {
   gap: 13rem;
 }
 
-#container::after {
-  content: "";
-  position: fixed;
-  margin: 0 1.5rem;
-  background-image: url(assets/wave.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-y: 110%;
+#wave {
+  position: absolute;
+  width: 100%;
+  bottom: -10%;
   filter: opacity(50%) drop-shadow(0 -10px 5px #ff22911f);
-  inset: 0;
+  transition: transform .3s ease;
 }
 
-#scrolling {
-  position: fixed;
-  margin: 1.5rem;
-  background-image: url(assets/name.svg);
-  background-repeat: repeat-x;
-  background-position-y: 60%;
-  background-size: 25rem;
-  animation: scrolling 10s 0s linear infinite;
-  inset: 0;
-}
-
-@keyframes scrolling {
-  from {
-    background-position-x: 0;
-  }
-  to {
-    background-position-x: 25rem;
-  }
+#wave:hover {
+  transform: translateY(-25px);
 }
 
 #name {
-  text-align: center;
-  font-size: 5rem;
-  letter-spacing: 1rem;
-  inline-size: max-content;
   filter: drop-shadow(5px 5px 3px #f963ae2f);
 }
 
+#name-break {
+  display: none;
+}
+
+#name > h1 {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 5rem;
+  transition: transform .3s ease;
+  z-index: 900;
+}
+
+#name > h1:hover {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+#name > h2 {
+  line-height: 2rem;
+  font-size: 3rem;
+  color: #ff2291;
+  transition: transform .3s ease;
+}
+
+#name > h2:hover {
+  transform: translateX(5%);
+}
+
 #cv {
-  filter: drop-shadow(3px 3px 2px #f963ae5f);
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  width: fit-content;
+  filter: drop-shadow(3px 3px 2px #f963ae7f);
+  transition: transform .3s ease;
+}
+
+#cv:hover {
+  transform: translateX(10%);
 }
 
 #search-container {
@@ -165,16 +170,24 @@ html {
 }
 
 #pins > img:hover {
-  transform: rotate(10deg) scale(1.15);
+  transform: rotate(5deg) scale(1.15);
 }
 
 #bocchi {
   position: absolute;
   margin: auto;
+  width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: bottom;
   inset: 0;
-  z-index: 900;
+  pointer-events: none;
+  z-index: 700;
   filter: drop-shadow(0 0 5px #f963ae7f);
+}
+
+#mobile-overlay {
+  display: none;
 }
 
 #footer {
@@ -197,18 +210,22 @@ html {
     gap: 10vw;
   }
 
-  #container::after {
-    background-position-y: bottom;
+  #wave {
+    bottom: -5%;
   }
 
-  #scrolling {
-    background-position-y: 65%;
+  #name-break {
+    display: block;
   }
 
-  #name {
+  #name > h1 {
     text-align: left;
     letter-spacing: initial;
     line-height: 7rem;
+  }
+
+  #name > h2 {
+    line-height: 3rem;
   }
 
   #footer {
@@ -217,13 +234,23 @@ html {
 }
 
 @media only screen and (max-width: 960px) {
-  #scrolling {
-    background-position-y: 70%;
+  #wave {
+    left: 0;
   }
 
-  #name {
+  #name > h1 {
+    line-height: 6rem;
     inline-size: initial;
     white-space: nowrap;
+  }
+
+  #name > h2 {
+    line-height: 5rem;
+  }
+
+  #cv {
+    margin-top: 0;
+    font-size: 1.5rem;
   }
 
   #search-container {
@@ -233,5 +260,65 @@ html {
   #pins {
     top: 0;
     flex-direction: column;
+  }
+
+  #footer {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #container {
+    padding: 1rem;
+  }
+
+  #name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #name > h2, #cv {
+    display: none;
+  }
+
+  #pins {
+    position: fixed;
+    right: 2.5rem;
+    top: 3rem;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  #pins > img {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 2rem;
+  }
+
+  #mobile-overlay {
+    position: fixed;
+    left: 3rem;
+    bottom: 3rem;
+    display: block;
+    z-index: 900;
+  }
+
+  #mobile-overlay > h2 {
+    font-size: 2.5rem;
+    color: #ff2291;
+    filter: drop-shadow(3px 3px 1px #ffffff9f);
+    transition: transform .3s ease;
+  }
+
+  #mobile-overlay > h2:hover {
+    transform: translateX(5%);
+  }
+
+  #mobile-overlay {
+    line-height: 3.75rem;
+    font-size: 1.75rem;
+    width: fit-content;
+    filter: drop-shadow(3px 3px 2px #f963ae7f);
+    transition: transform .3s ease;
   }
 }

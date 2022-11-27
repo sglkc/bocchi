@@ -1,21 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>「後藤ひとり」公式サイト</title>
+    <meta name="theme-color" content="#ff2291">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="後藤「ぼっち」ひとりサイト">
+    <meta property="og:description" content="Hitori Gotou my beloved">
+    <meta property="twitter:image" content="https://sglkc.github.io/bocchi/assets/thumbnail.png">
+    <title>後藤「ぼっち」ひとりサイト</title>
     <link href="assets/favicon.png" rel="icon">
     <link href="style.css" rel="stylesheet">
   </head>
   <body oncontextmenu="return false">
     <div id="container">
-      <div id="scrolling"></div>
+      <img id="wave" src="assets/wave.png" draggable="false">
       <div id="left">
-        <h1 id="name">後藤<wbr>ひとり</h1>
-        <img id="cv" src="assets/cv.svg">
+        <div id="name">
+          <h1>後</h1>
+          <h1>藤</h1>
+          <div id="name-break"></div>
+          <h1>ひ</h1>
+          <h1>と</h1>
+          <h1>り</h1>
+          <h2>Guitar</h2>
+        </div>
+        <div id="cv">
+          <h1>吉野青山</h1>
+          <h4>CV Yoshino Aoyama</h4>
+        </div>
       </div>
       <div id="right">
-        <form id="search-container" action="https://duckduckgo.com">
-          <input id="search" type="search" name="q" placeholder="type here" autocomplete="off">
+        <form id="search-container" action="https://duckduckgo.com" target="_blank">
+          <input id="search" type="search" name="q" placeholder="type here" autocomplete="off" autofocus>
           <input id="button" type="submit" value="search">
         </form>
         <div id="pins">
@@ -25,6 +42,11 @@
       </div>
     </div>
     <img id="bocchi" src="assets/hitori.png" draggable="false">
+    <div id="mobile-overlay">
+      <h2>Guitar</h2>
+      <h1>吉野青山</h1>
+      <h4>CV Yoshino Aoyama</h4>
+    </div>
     <img id="footer" src="assets/wave.png" draggable="false">
   </body>
 </html>
